@@ -1,4 +1,4 @@
 interface:
   display_name: "Meeting to Docs"
   short_description: "Turn meetings into reusable documentation"
-  default_prompt: "Use $meeting-to-docs with the attached recording and supporting materials to create transcription.md and summary.md; infer participants when possible and ask about unresolved identities only after drafting."
+  default_prompt: "Use $meeting-to-docs with the attached recording and supporting materials to create a complete timestamped transcription.md and a focused summary.md without meeting timecodes or side topics, with explanatory diagrams and relevant video frames; infer participants when possible and ask about unresolved identities only after drafting."

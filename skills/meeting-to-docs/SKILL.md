@@ -9,7 +9,7 @@ description: >-
 Turn a meeting and its surrounding materials into two traceable artifacts:
 
 - `transcription.md`: a chronological transcript with timestamps and stable speaker attribution.
-- `summary.md`: a coherent technical explanation that another developer can use without hearing the recording.
+- `summary.md`: a focused technical explanation of the core discussion, without meeting timestamps, supported by explanatory diagrams and relevant video frames when available.
 
 Use names supplied by the user when available. Otherwise infer speaker identities from evidence, but never guess a name merely from a voice.
 
@@ -85,37 +85,37 @@ Record identity confidence internally as confirmed, probable, or unresolved. In 
 
 Read [references/summary-format.md](references/summary-format.md) before drafting.
 
-Reconstruct the discussion into a logical path rather than repeating it chronologically. The summary should explain, where relevant:
+First identify the central question, problem, or decision. Organize the summary around that subject and its causal logic. When the meeting compares concepts, explain each concept, compare them on shared criteria, and show the tradeoffs and unresolved choice. Do not turn the summary into a chronological meeting report.
 
-- the problem and intended outcome;
-- the system or process at a glance;
-- components, dependencies, interfaces, and data flow;
-- the normal operator or developer workflow;
-- identifiers, commands, filters, links, diagrams, and examples actually discussed;
-- decisions and their rationale;
-- alternatives rejected or deferred;
-- action items, owners, and deadlines when stated;
-- open questions, risks, limitations, and technical debt;
-- terms a new developer needs to understand.
+Retain the workflows, dependencies, examples, constraints, decisions, and next steps that help a developer understand the central subject. Keep unrelated projects, side conversations, scheduling, and incidental implementation details in the transcript. A secondary topic belongs in the summary only when it explains a consequence or constraint of the main discussion. This selection does not shorten the transcript: it still covers the whole recording.
 
-Distinguish current behavior, proposals, assumptions, and confirmed decisions. Cite transcript timestamps for consequential facts, decisions, and unresolved points so a reader can trace the summary back to the meeting.
+The default summary has **no meeting timecodes** in prose, tables, captions, or citation links. Link to `transcription.md` once for the full record; keep precise timestamp associations in the private working inventory for verification. The meeting date is useful context and may remain. If the user explicitly requests timestamp citations in the summary, include them.
 
-Do not force irrelevant headings. Prefer a small flow diagram when it makes a multi-step system materially easier to understand.
+Build the visual explanation as part of the summary:
+
+- Use diagrams to explain concepts, relationships, workflows, boundaries, or conflicts that are harder to follow in prose. Keep them tied to the discussion; label proposals and illustrative scenarios accurately.
+- When video is available, inspect the relevant parts and extract readable frames of the interfaces, diagrams, or demonstrations that help explain the core subject. Prefer a meaningful crop over an unreadable full desktop, and preserve enough context to avoid changing the meaning.
+- Place each visual next to the explanation it supports, with a short caption saying what to notice. Use actual source frames for evidence, not generated reconstructions. Do not force decorative diagrams or irrelevant frames; audio-only inputs do not require video assets.
+- Save media beside the documents in `assets/`, embed it using paths supported by the host, and verify that the rendered result is legible and the links work. Detailed selection and provenance rules are in `references/summary-format.md`.
+
+Distinguish current behavior, proposals, assumptions, and confirmed decisions. Verify consequential claims against the transcript or named supporting material without adding timecodes back to the summary. Keep source notes brief; detailed coverage and speaker uncertainty belong in the transcript unless they materially affect a summary claim. Do not force a participant roster, glossary, or action table that distracts from the core explanation.
 
 ### 5. Verify the pair
 
 Run the checks in [references/quality-checklist.md](references/quality-checklist.md). In particular, verify that:
 
 - the transcript timeline has no unexplained gaps;
-- speaker labels are consistent across both files;
-- every decision or action item in the summary is supported by the transcript or a named supporting source;
+- any speaker names or labels used in the summary match the transcript;
+- the summary stays on its central subject, has no meeting timecodes by default, and preserves the status of proposals and decisions;
+- every consequential claim or action item in the summary is supported by the transcript or a named supporting source;
+- diagrams and selected video frames explain the subject, have accurate captions, and render legibly;
 - links and identifiers are copied exactly;
 - uncertain content remains marked as uncertain;
 - neither file claims that an unavailable source was inspected.
 
 ### 6. Deliver and, if needed, reconcile identities
 
-Write the files to the user-specified directory. Otherwise use the current task workspace. Default to `transcription.md` and `summary.md`; if either name already exists and the user did not ask to update it, add the meeting date or a short topic slug instead of overwriting it.
+Write the files to the user-specified directory. Otherwise use the current task workspace. Default to `transcription.md` and `summary.md`; if either name already exists and the user did not ask to update it, add the meeting date or a short topic slug instead of overwriting it. Keep referenced visual assets with the delivered files, not only in a temporary processing folder.
 
 In the final response, report:
 
@@ -124,4 +124,4 @@ In the final response, report:
 - whether participant identities are confirmed, probable, or unresolved;
 - important transcription limitations.
 
-When identities remain unresolved, end with one compact question containing the current labels, timestamp samples, and the exact information needed, for example: “Who are Speaker 1 and Speaker 2, and what are their roles?” After the user replies, update participant lists, speaker labels, ownership, and action items in both files, then rerun the identity and consistency checks.
+When identities remain unresolved, end with one compact question containing the current labels, timestamp samples, and the exact information needed, for example: “Who are Speaker 1 and Speaker 2, and what are their roles?” After the user replies, update participant lists, speaker labels, ownership, and action items wherever they occur in the two files, then rerun the identity and consistency checks.

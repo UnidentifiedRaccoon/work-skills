@@ -23,25 +23,39 @@ Use this checklist after both artifacts exist. Fix detected issues before delive
 
 - Confirmed names have direct or corroborated evidence.
 - Probable names are visibly qualified.
-- Unresolved voices retain stable labels in both files.
+- Unresolved voices retain stable labels in the transcript and wherever they are referenced in the summary.
 - The final clarification question includes timestamp samples that let the user map each unresolved label.
 - No biometric identification or unsupported inference was used.
 
 ## Summary
 
-- A new developer can identify the purpose, central flow, normal workflow, and verification point.
-- Current behavior, proposals, assumptions, and decisions are not conflated.
-- Consequential claims and action items link back to timestamps or named supporting sources.
-- Owners and deadlines are stated only when supported.
-- Links are exact and described by purpose.
-- Mutable facts are dated or qualified.
-- Limitations, risks, open questions, and technical debt are not presented as resolved.
-- The summary adds structure and explanation instead of merely shortening the transcript.
+- The central question, concepts, or workflow is clear early in the document.
+- The reading order follows the subject rather than the chronology of the conversation.
+- Unrelated projects, side conversations, and meeting logistics are omitted; any secondary topic explains a constraint or consequence of the main discussion.
+- There are no meeting timecodes in summary prose, headings, tables, captions, or citation links unless the user explicitly requested them. A meeting date is allowed.
+- A link to the full transcript provides access to the complete record; consequential claims remain traceable through the private working inventory or named supporting sources.
+- Current behavior, proposals, assumptions, and decisions are not conflated; an unresolved choice remains unresolved.
+- Owners and deadlines are stated only when supported and relevant to the central subject.
+- Links and identifiers are exact, and mutable facts are dated or qualified.
+- Source and identity caveats are brief and included only when needed to assess a summary claim.
+- The summary explains the subject rather than merely shortening the transcript.
+
+## Visuals
+
+- Diagrams clarify the core relationships, concepts, workflow, or conflict where a visual explanation is useful; they do not invent architecture or settled decisions.
+- Relevant video demonstrations were inspected and informative frames included when available. Omitted frames have a real reason, such as audio-only input, unreadable video, or no relevant visual content.
+- Frames are extracted from the source, with enough context retained to preserve their meaning; demonstration data is not treated as participant evidence.
+- Captions explain what to notice and distinguish mockups/proposals from implemented behavior, without meeting timecodes by default.
+- Diagram labels, arrows, and screenshot text are readable at the document's display size.
+- Each visual is placed near the explanation it supports; decorative and redundant images are omitted.
+- Asset files are delivered beside the documents, all embedded paths resolve in the host, and no output depends only on a temporary processing folder.
+- Source frame times and crops are recorded in the private working inventory.
 
 ## Cross-file consistency
 
-- Participant names and labels match exactly.
-- Topic, date, duration, and source names do not conflict.
-- Summary timestamps exist within the transcript timeline.
+- Participant names and labels match wherever used in both files; the summary need not repeat the full roster.
+- The summary focus is supported by the meeting; dates, durations, and source names match wherever stated.
+- The transcript retains its complete timestamped timeline, including substantive side topics omitted from the summary.
+- If the user requested summary timestamp citations, those timestamps are within the transcript timeline.
 - Every decision and action item in `summary.md` is supported by `transcription.md` or a named source.
-- After participant clarification, names, roles, ownership, and references are updated in both files.
+- After participant clarification, names, roles, ownership, and references are updated wherever they occur in the two files.
