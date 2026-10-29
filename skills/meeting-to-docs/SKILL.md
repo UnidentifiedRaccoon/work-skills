@@ -100,7 +100,19 @@ Build the visual explanation as part of the summary:
 
 Distinguish current behavior, proposals, assumptions, and confirmed decisions. Verify consequential claims against the transcript or named supporting material without adding timecodes back to the summary. Keep source notes brief; detailed coverage and speaker uncertainty belong in the transcript unless they materially affect a summary claim. Do not force a participant roster, glossary, or action table that distracts from the core explanation.
 
-### 5. Verify the pair
+### 5. Finish the text with `humanizer-ru`
+
+After the content and visuals are complete, invoke the locally installed [humanizer-ru](https://github.com/smixs/humanizer-ru) skill before final verification and delivery. This is the default final editing pass for Russian prose, not an optional suggestion when the skill is available.
+
+Resolve `humanizer-ru` through the host's skill catalog and read its actual `SKILL.md`. If it is not listed, check the host's configured local skill directories before concluding it is missing; do not assume one installation path. Follow the installed skill's audit, targeted editing, and verification workflow, including its supporting references and linter. Resolve its resources relative to its own directory. Running only the linter does not replace the editing pass.
+
+Apply it to the Russian prose in `summary.md`, including headings, captions, and explanatory diagram labels, and to agent-written introductions and notes in `transcription.md`. Treat recorded speaker turns and direct quotations as source evidence: do not stylistically rewrite them, even in a readable transcript. Preserve facts, numbers, names, uncertainty, proposal/decision status, technical identifiers, exact UI labels, URLs, asset paths, code, and diagram syntax. Do not add personal opinions, emotions, or invented details to give the text a voice. Keep timestamps in the transcript and out of the summary by default. For non-Russian passages, preserve the requested language and report that this Russian-language editing pass does not apply.
+
+Save the clean edited prose back into the artifacts. Keep the editing audit and lint output in the working inventory, not appended to the documents. If a protected quotation or technical fragment triggers a style rule, preserve it and record the exception; factual fidelity takes priority over a clean style score. Then rerun the meeting checks below, including visual readability if labels changed. State only the editing and checks actually performed.
+
+If `humanizer-ru` is not installed, finish and save the meeting artifacts, disclose that the final editing pass has not run, and offer to install it from the linked repository. Do not install it automatically or substitute a different skill. For example: “`humanizer-ru` не установлен. Установить его из https://github.com/smixs/humanizer-ru и затем отредактировать готовые документы?” If the user accepts, use the host's skill installer, load the installed skill, edit the saved artifacts, and rerun verification. If installation is declined, leave the saved documents available and the skipped pass explicit. If the skill exists but cannot be read or run, report that actual limitation rather than calling it uninstalled or claiming success.
+
+### 6. Verify the pair
 
 Run the checks in [references/quality-checklist.md](references/quality-checklist.md). In particular, verify that:
 
@@ -111,9 +123,10 @@ Run the checks in [references/quality-checklist.md](references/quality-checklist
 - diagrams and selected video frames explain the subject, have accurate captions, and render legibly;
 - links and identifiers are copied exactly;
 - uncertain content remains marked as uncertain;
+- the `humanizer-ru` pass was completed on eligible prose, or its missing/unavailable/not-applicable status is explicit; editing preserved the source evidence and document structure;
 - neither file claims that an unavailable source was inspected.
 
-### 6. Deliver and, if needed, reconcile identities
+### 7. Deliver and, if needed, reconcile identities
 
 Write the files to the user-specified directory. Otherwise use the current task workspace. Default to `transcription.md` and `summary.md`; if either name already exists and the user did not ask to update it, add the meeting date or a short topic slug instead of overwriting it. Keep referenced visual assets with the delivered files, not only in a temporary processing folder.
 
@@ -122,6 +135,7 @@ In the final response, report:
 - both file paths;
 - which primary and supporting sources were used or unavailable;
 - whether participant identities are confirmed, probable, or unresolved;
-- important transcription limitations.
+- important transcription limitations;
+- whether the `humanizer-ru` final edit ran; if it is missing, include the installation offer.
 
-When identities remain unresolved, end with one compact question containing the current labels, timestamp samples, and the exact information needed, for example: “Who are Speaker 1 and Speaker 2, and what are their roles?” After the user replies, update participant lists, speaker labels, ownership, and action items wherever they occur in the two files, then rerun the identity and consistency checks.
+When identities remain unresolved, end with one compact question containing the current labels, timestamp samples, and the exact information needed, for example: “Who are Speaker 1 and Speaker 2, and what are their roles?” After the user replies, update participant lists, speaker labels, ownership, and action items wherever they occur in the two files. Apply the final editing pass to any newly written eligible prose, then rerun the identity and consistency checks.

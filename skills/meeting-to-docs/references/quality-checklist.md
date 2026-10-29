@@ -51,6 +51,17 @@ Use this checklist after both artifacts exist. Fix detected issues before delive
 - Asset files are delivered beside the documents, all embedded paths resolve in the host, and no output depends only on a temporary processing folder.
 - Source frame times and crops are recorded in the private working inventory.
 
+## Final editing with `humanizer-ru`
+
+- Local availability was checked through the skill catalog or configured skill directories.
+- When available, the actual installed skill and required references were read, and its audit, editing, and verification workflow was applied to eligible Russian prose; a lint-only run does not count as the editing pass.
+- The linter ran, or the installed skill's manual fallback was used and reported accurately. Protected quotations or technical fragments were preserved, with any style exceptions recorded.
+- Speaker turns, quotations, facts, numbers, names, uncertainty, and proposal/decision status survived the edit unchanged in meaning.
+- URLs, asset paths, identifiers, exact UI labels, code, diagram syntax, and the transcript timeline remain intact; summary timecodes were not reintroduced.
+- The clean text is saved in the artifacts; editing reports and lint output stay in the working inventory. Changed diagram labels were rendered and checked again.
+- If the skill is missing, the artifacts are saved, the skipped pass is disclosed, and installation from https://github.com/smixs/humanizer-ru is offered rather than performed automatically. An unreadable or failed installation is reported as such.
+- Non-Russian passages keep their requested language; the Russian-only pass is marked not applicable where needed.
+
 ## Cross-file consistency
 
 - Participant names and labels match wherever used in both files; the summary need not repeat the full roster.

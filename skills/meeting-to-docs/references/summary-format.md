@@ -82,6 +82,7 @@ When a recording contains relevant interfaces, diagrams, or demonstrations, insp
 
 ## Delivery and final edit
 
+- After the content and visuals are ready, apply the `humanizer-ru` final editing step in `SKILL.md` to Russian prose, captions, and explanatory labels. Preserve facts, uncertainty, exact quoted labels, and all links; keep the editing report out of the summary. If the skill is missing, save the artifacts and offer installation from https://github.com/smixs/humanizer-ru instead of silently skipping the pass.
 - Store images and exported diagrams under `assets/` next to the Markdown files. Embed them using paths supported by the host, and include the assets in the delivery rather than linking to temporary files. Link to a full frame when useful context was cropped out.
 - Check the document as a reader: image size, captions, diagram labels, links, and the connection between prose and visuals. Preserve a clear reading path without requiring the reader to open every original.
 - Distinguish current behavior, proposals, assumptions, and confirmed decisions. Never invent an owner, deadline, decision, command, or URL.
